@@ -15,7 +15,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "DEV-RG"
+  name     = "PROD-RG"
   location = "CanadaCentral"
 }
 
@@ -46,7 +46,7 @@ resource "azurerm_sql_database" "sql" {
 }
 
 resource "azurerm_storage_account" "stor" {
-  name                     = "mybackupstorcc"
+  name                     = "prodstorcc01"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
@@ -58,7 +58,7 @@ resource "azurerm_storage_account" "stor" {
 }
 
 resource "azurerm_storage_container" "cont" {
-  name                  = "vhds"
+  name                  = "prodconcc01"
   storage_account_name  = azurerm_storage_account.stor.name
   container_access_type = "private"
 }
